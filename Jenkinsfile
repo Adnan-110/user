@@ -5,7 +5,7 @@
 // Simply declare environment variable like below
 env.COMPONENT="User"
 env.APP_TYPE="node"
-env.SONAR_URL="172.31.39.131"
+
 
 nodeJs()
 
