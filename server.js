@@ -243,8 +243,8 @@ redisClient.on('ready', (r) => {
     logger.info('Redis READY', r);
 });
 
-// if (process.env.MONGO == 'true') {
-// set up Mongo
+
+// set up Mongo : Uncomment it when planning to do for Local Mongo
 // function mongoConnect() {
 //     return new Promise((resolve, reject) => {
 //         var mongoURL = process.env.MONGO_URL || 'mongodb://mongodb:27017/users';
@@ -260,9 +260,8 @@ redisClient.on('ready', (r) => {
 //         });
 //     });
 // }
-// }
 
-if (process.env.DOCUMENTDB == 'true') {
+
 function mongoConnect() {
     return new Promise((resolve, reject) => {
     var mongoURL = process.env.MONGO_URL || 'mongodb://username:password@mongodb:27017/users?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false';
@@ -271,7 +270,7 @@ function mongoConnect() {
         // Mutable & Immutable
         //tlsCAFile: `/home/roboshop/user/rds-combined-ca-bundle.pem` //Specify the DocDB; cert
         // Container
-        tlsCAFile: `/home/roboshop/user/rds-combined-ca-bundle.pem` //Specify the DocDB; cert
+        tlsCAFile: `/home/roboshop/global-bundle.pem` //Specify the DocDB; cert
     }, (error, client) => {
     if(error) {
         reject(error);
@@ -284,9 +283,6 @@ function mongoConnect() {
 });
 });
 }
-}
-
-
 
 function mongoLoop() {
     mongoConnect().then((r) => {
@@ -305,4 +301,3 @@ const port = process.env.USER_SERVER_PORT || '8080';
 app.listen(port, () => {
     logger.info('Started on port', port);
 });
-
