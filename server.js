@@ -264,7 +264,7 @@ redisClient.on('ready', (r) => {
 
 function mongoConnect() {
     return new Promise((resolve, reject) => {
-        var mongoURL = process.env.MONGO_URL || 'mongodb://admin1:roboshop1@roboshop-dev-docdb.cluster-cclgwxpgogew.us-east-1.docdb.amazonaws.com:27017/users?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false';
+        var mongoURL = process.env.MONGO_URL || 'mongodb://admin1:roboshop1@roboshop-dev-docdb-0.cclgwxpgogew.us-east-1.docdb.amazonaws.com:27017/users?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false';
         var client = mongoClient.connect(mongoURL,
             {
                 // Mutable & Immutable
