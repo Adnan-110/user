@@ -47,7 +47,7 @@ metadata:
   name: user-svc
 spec:
   selector:
-    'app:': user
+    app: user
   ports:
   - protocol: TCP
     port: 8080
